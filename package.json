@@ -12,13 +12,16 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
-    "prettier": "^2.3.0"
+    "prettier": "^2.3.0",
+    "testcafe": "^1.14.2",
+    "@babel/plugin-proposal-private-methods": "^7.13.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:coverage": "CI=1 react-scripts test --collectCoverage",
+    "testcafe": "testcafe chrome -L"
   },
   "eslintConfig": {
     "extends": [
