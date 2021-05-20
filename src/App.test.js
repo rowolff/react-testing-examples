@@ -1,8 +1,17 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, waitFor, screen } from "@testing-library/react";
+import App from "./App";
+const fetchMock = jest.spyOn(global, "fetch");
 
-test('renders learn react link', () => {
+test("renders without crashing", async () => {
+  fetchMock.mockImplementation(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ title: "mocked" }),
+    })
+  );
+
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  const text = await waitFor(() => screen.getByText("mocked"));
+  expect(text).toBeInTheDocument();
 });
