@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
+const Counter = ({ onSuccess }) => {
+  const [buttonValue, setIncrement] = useState(0);
 
-  const increment = () => {
-    setCount((prevCount) => prevCount + 1);
+  const incement = () => {
+    setIncrement((prevCount) => prevCount + 1);
   };
 
-  return <button onClick={increment}>You clicked me {count} times</button>;
+  if (buttonValue === 3) {
+    onSuccess();
+  }
+
+  return (
+    <button onClick={incement} title="incrementor">
+      You clicked me {buttonValue} times
+    </button>
+  );
 };
 
 export default Counter;
