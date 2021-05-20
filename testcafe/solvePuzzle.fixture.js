@@ -20,12 +20,10 @@ test("Given: button clicked, Should: say 'good clicker'", async (t) => {
     .click(incrementButton)
     .click(incrementButton);
 
-  const result = Selector("div").withText("Congratulations, good clicker");
+  const clickerTest = Selector("div").withText("Congratulations, good clicker");
 
-  await t.expect(result.exists).ok();
-});
+  await t.expect(clickerTest.exists).ok();
 
-test("Given: puzzle solved, Should: say 'correct'", async (t) => {
   const input = Selector("input").withAttribute("name", "answer");
   const submitButton = Selector("button").withAttribute("name", "submit");
 
@@ -48,7 +46,7 @@ test("Given: puzzle solved, Should: say 'correct'", async (t) => {
     .notOk(TIMEOUT)
     .click(submitButton);
 
-  const result = Selector("div").withText("Congratulations, correct");
+  const answerText = Selector("div").withText("Congratulations, correct");
 
-  await t.expect(result.exists).ok();
+  await t.expect(answerText.exists).ok();
 });
